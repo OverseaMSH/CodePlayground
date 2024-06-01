@@ -42,3 +42,9 @@ elif computerChoiceNum == 1:
     print("Computer chose:\n", paper)
 elif computerChoiceNum == 2:
     print("Computer chose:\n", scissors)
+if playerChoiceNum == computerChoiceNum:
+    print("You Draw!")
+elif playerChoiceNum == 0 and computerChoiceNum == 2 or playerChoiceNum == 1 and computerChoiceNum == 0 or playerChoiceNum == 2 and computerChoiceNum == 1:
+    print("You Won!")
+else:
+    print("You Lost!")
