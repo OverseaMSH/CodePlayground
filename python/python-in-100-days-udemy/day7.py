@@ -153,5 +153,6 @@ hangmanStages = [
 
 def select_random_word(dict):
     category=random.choice(list(dict.keys()))
-    return category
+    word=random.choice(dict[category])
+    return category,word
 print(select_random_word(wordCategories))
