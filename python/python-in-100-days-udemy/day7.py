@@ -157,36 +157,41 @@ def select_random_word(dict):
     category = random.choice(list(dict.keys()))
     word = random.choice(dict[category])
     return category, word
-def find_indexes(string,character):
-    indexes=[index for index,char in enumerate(string) if char==character] 
+
+
+def find_indexes(string, character):
+    indexes = [index for index, char in enumerate(string) if char == character]
     return indexes
+
     # Find index of the letters guessed by the user that are in the word. For example our word is toystory and the guessed letter is y. It will return the y indexes as list in toystory.
 category, word = select_random_word(wordCategories)
 guessedWord = []
 for i in word:
     guessedWord.append("_")
-counter = 0
 hangmanStage = 0
 while True:
-    for i in guessedWord:
-        if i == "_":
-            counter += 1
-    guessedLetter = input(f"Guess a letter, the word is in {category} category : ")
+    counter = 0
+
+    guessedLetter = input(f"Guess a letter, the word is in {
+                          category} category : ")
+
     os.system('cls' if os.name == 'nt' else 'clear')
     if guessedLetter in word:
-        for i in find_indexes(word,guessedLetter):
-            guessedWord[i]=guessedLetter
+        for i in find_indexes(word, guessedLetter):
+            guessedWord[i] = guessedLetter
         for i in guessedWord:
-            print(i,end=' ')
+            print(i, end=' ')
         print(f"\n{hangmanStages[hangmanStage]}")
     else:
         for i in guessedWord:
-            print(i,end=' ')
-        print(f"\nyou guessed {guessedLetter}, that's not in the word, you lose a life")
-        if hangmanStage<len(hangmanStages)-2:
+            print(i, end=' ')
+        print(f"\n\nyou guessed {
+              guessedLetter}, that's not in the word, you lose a life")
+        if hangmanStage < len(hangmanStages)-2:
             hangmanStage += 1
             print(hangmanStages[hangmanStage])
         else:
+            os.system('csls' if os.name == 'nt' else 'clear')
             print(f"The word was {word}")
             print(hangmanStages[len(hangmanStages)-1])
             print(r"""
@@ -198,3 +203,16 @@ while True:
  \____/\__,_|_| |_| |_|\___|  \___/  \_/ \___|_|    (_)
             """)
             break
+    for i in guessedWord:
+        if i == "_":
+            counter += 1
+    if counter == 0:
+        print(r"""
+__   __                               _
+\ \ / /                    (_)       | |
+ \ V /___  _   _  __      ___ _ __   | |
+  \ // _ \| | | | \ \ /\ / / | '_ \  | |
+  | | (_) | |_| |  \ V  V /| | | | | |_|
+  \_/\___/ \__,_|   \_/\_/ |_|_| |_| (_)
+                  """)
+        break
