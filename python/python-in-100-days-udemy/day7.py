@@ -1,4 +1,5 @@
 import random
+import os
 print(r"""
  _   _
 | | | |
@@ -151,14 +152,26 @@ hangmanStages = [
     """
 ]
 
+
 def select_random_word(dict):
-    category=random.choice(list(dict.keys()))
-    word=random.choice(dict[category])
-    return category,word
-categoty,word=select_random_word(wordCategories)
-guessedWord=[]
+    category = random.choice(list(dict.keys()))
+    word = random.choice(dict[category])
+    return category, word
+def find_indexes(string,character):
+    indexes=[index for index,char in enumerate(string) if char==character] 
+    return indexes
+    # Find index of the letters guessed by the user that are in the word. For example our word is toystory and the guessed letter is y. It will return the y indexes as list in toystory.
+print(find_indexes("toystory","y"))
+category, word = select_random_word(wordCategories)
+guessedWord = []
 for i in word:
     guessedWord.append("_")
-counter=0
-hangmanStage=0
-print("".join(guessedWord))
+counter = 0
+hangmanStage = 0
+while True:
+    for i in guessedWord:
+        if i == "_":
+            counter += 1
+    # guessedLetter = input(f"Guess a letter, the word is in {category} category : ")
+    # os.system('cls' if os.name == 'nt' else 'clear')
+        
