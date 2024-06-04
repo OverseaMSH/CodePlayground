@@ -1,3 +1,4 @@
+import random
 print(r"""
  _   _
 | | | |
@@ -150,3 +151,7 @@ hangmanStages = [
     """
 ]
 
+def select_random_word(dict):
+    category=random.choice(list(dict.keys()))
+    return category
+print(select_random_word(wordCategories))
