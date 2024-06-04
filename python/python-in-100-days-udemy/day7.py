@@ -8,7 +8,7 @@ print(r"""
 \_| |_/\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
                     __/ |
                    |___/   
-                   \n
+
 Welcome to sadegh day 7 python in 100 days Hangman
 """)
 
@@ -155,4 +155,10 @@ def select_random_word(dict):
     category=random.choice(list(dict.keys()))
     word=random.choice(dict[category])
     return category,word
-print(select_random_word(wordCategories))
+categoty,word=select_random_word(wordCategories)
+guessedWord=[]
+for i in word:
+    guessedWord.append("_")
+counter=0
+hangmanStage=0
+print("".join(guessedWord))
