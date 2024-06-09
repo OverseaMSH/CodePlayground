@@ -157,24 +157,19 @@ def select_random_word(dict):
     category = random.choice(list(dict.keys()))
     word = random.choice(dict[category])
     return category, word
-
+category, word = select_random_word(wordCategories)
 
 def find_indexes(string, character):
     indexes = [index for index, char in enumerate(string) if char == character]
     return indexes
 
-    # Find index of the letters guessed by the user that are in the word. For example our word is toystory and the guessed letter is y. It will return the y indexes as list in toystory.
-category, word = select_random_word(wordCategories)
 guessedWord = []
 for i in word:
     guessedWord.append("_")
 hangmanStage = 0
 while True:
     counter = 0
-
-    guessedLetter = input(f"Guess a letter, the word is in {
-                          category} category : ")
-
+    guessedLetter = input(f"Guess a letter, the word is in {category} category : ")
     os.system('cls' if os.name == 'nt' else 'clear')
     if guessedLetter in word:
         for i in find_indexes(word, guessedLetter):
