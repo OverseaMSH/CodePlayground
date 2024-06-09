@@ -1,4 +1,6 @@
 import time
+import os
+
 art = (
     " ,-----.                                  \n"
     "'  .--./,--,--.,---.  ,---. ,--,--.,--.--. \n"
@@ -23,7 +25,7 @@ def encrypt(text, shiftNum):
     newText = ""
     for char in text:
         if char in alphabets:
-            newText += alphabets[(alphabets.index(char)+shiftNum) % 26]
+            newText += alphabets[(alphabets.index(char) + shiftNum) % 26]
         else:
             newText += char
     return newText
@@ -32,30 +34,62 @@ def encrypt(text, shiftNum):
 def decrypt(text, shiftNum):
     newText = ""
     for char in text:
-        newText += alphabets[(alphabets.index(char)-shiftNum) % 26]
+        if char in alphabets:
+            newText += alphabets[(alphabets.index(char) - shiftNum) % 26]
+        else:
+            newText += char
     return newText
 
 
-print(encrypt("hello", 4))
 while True:
-    print(art+"\n")
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(art + "\n")
     print("Welcome to sadegh day 8 python in 100 days cryption app")
-    selection = input(
-        "Enter 'encode' to encrypt, 'decode' to decrypt:\n").lower()
-    if selection == "encode":
-        text = input("Enter the text to be encoded: ").lower()
-        shiftNum = int(input("Enter the shift number: "))
-        print(f"Encoded text: {encrypt(text, shiftNum)}")
-        finished = input("Are you finished? (yes/no): ").lower()
+    try:
+        selection = input(
+            "Enter 'encode' to encrypt, 'decode' to decrypt:\n").lower()
+        if selection == "encode":
+            text = input("Enter the text to be encoded: ").lower()
+            while True:
+                try:
+                    shiftNum = int(input("Enter the shift number: "))
+                    break
+                except ValueError:
+                    print("Invalid input. Please enter a valid number for the shift.")
+                    time.sleep(3)
+
+            print(f"Encoded text: {encrypt(text, shiftNum)}")
+        elif selection == "decode":
+            text = input("Enter the text to be decoded: ").lower()
+            while True:
+                try:
+                    shiftNum = int(input("Enter the shift number: "))
+                    break
+                except ValueError:
+                    print("Invalid input. Please enter a valid number for the shift.")
+                    time.sleep(3)
+
+            print(f"Decoded text: {decrypt(text, shiftNum)}")
+        else:
+            print("Invalid input. Please enter 'encode' or 'decode'.")
+            time.sleep(3)
+            os.system('cls' if os.name == 'nt' else 'clear')
+
+            continue
+
+        while True:
+            finished = input("Are you finished? (yes/no): ").lower()
+            if finished == 'yes':
+                break
+            elif finished == 'no':
+                break
+            else:
+                print("Invalid input. Please enter 'yes' or 'no'.")
+                time.sleep(3)
+
         if finished == 'yes':
             break
-    elif selection == "decode":
-        text = input("Enter the text to be decoded: ").lower()
-        shiftNum = int(input("Enter the shift number: "))
-        print(f"Decoded text: {decrypt(text, shiftNum)}")
-        finished = input("Are you finished? (yes/no): ").lower()
-        if finished == 'yes':
-            break
-    else:
-        print("Invalid input. Please enter 'encode', 'decode'.")
-        time.sleep(1)
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        time.sleep(3)
+        os.system('cls' if os.name == 'nt' else 'clear')
