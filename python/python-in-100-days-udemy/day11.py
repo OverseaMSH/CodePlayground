@@ -446,42 +446,65 @@ clubs = [
 ]
 deck = spades + hearts + diamonds + clubs
 
+
 def choose_card(deck):
     random.shuffle(deck)
     randomCard = random.choice(deck)
-    if randomCard[1] == (1, 11):
-        if randomCard[1] + 11 > 21:
-            randomCard = (randomCard[0], 1)
-        else:
-            randomCard = (randomCard[0], 11)
     deck.remove(randomCard)
     return randomCard
 
 
+def is_black_jack(cards):
+    secIndex = [c[1] for c in cards]
+    if (1, 11) and 10 in secIndex:
+        return len(cards)==2
+    return False
+
+
+def calculate_score(cards):
+    score = 0
+    aces = 0
+    for card in cards:
+        if isinstance(card[1], tuple):
+            score += 11
+            aces += 1
+        else:
+            score += card[1]
+    while score > 21 and aces > 0:
+        score -= 10
+        aces -= 1
+    return score
+
 
 def show_first_hand_of_player():
     print("Your cards:")
-    pCard1, pCard2 = choose_card(deck), choose_card(deck)
-    print(pCard1[0], pCard2[0])
-    print("Current score:", pCard1[1] + pCard2[1], "\n")
-    return [pCard1, pCard2]
+    results=[choose_card(deck),choose_card(deck)]
+    for result in results:
+        print(result[0])
+    print("Your current score:", calculate_score(results), "\n")
+    return results
+
 
 def show_first_hand_of_computer():
     print("Computer cards:")
     cCard1 = choose_card(deck)
     print(cCard1[0])
+    print("Computer current score:",cCard1[1][1] if isinstance(cCard1[1],tuple) else cCard1[1])
     return [cCard1]
 
-def player_stand(computerCards, playerCards):
-    while sum(card[1] for card in computerCards) < 22:
+
+def player_stand(computerCards):
+    while calculate_score(computerCards) < 17:
         computerCards.append(choose_card(deck))
     return computerCards
+
 
 while True:
     try:
         print(blackjackArt)
         print("Welcome to Sadegh python in 100 days blackjack")
-        start = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
+        start = input(
+            "Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
         if start != 'n' and start != 'y':
             raise ValueError
         else:
@@ -489,19 +512,21 @@ while True:
                 playerCards = show_first_hand_of_player()
                 computerCards = show_first_hand_of_computer()
                 try:
-                    anotherCard = input("Type 'y' to hit or type 'n' to stand: ").lower()
+                    anotherCard = input(
+                        "Type 'y' to hit or type 'n' to stand: ").lower()
                     if anotherCard != 'n' and anotherCard != 'y':
                         raise ValueError
                     else:
                         if anotherCard == 'y':
                             pass  # You can implement the 'hit' functionality here
+                     
                         else:
-                            computerCards = player_stand(computerCards, playerCards)
+                            computerCards = player_stand(computerCards)
                             print("Computer's final cards:")
                             for card in computerCards:
                                 print(card[0])
-                            print("Computer's final score:", sum(card[1] for card in computerCards))
-                            print("Your final score:", sum(card[1] for card in playerCards))
+                            print("Your final score:", calculate_score(playerCards))
+                            print("Computer's final score:", calculate_score(computerCards))
 
                 except ValueError:
                     print("Please only type 'y' or 'n'")
