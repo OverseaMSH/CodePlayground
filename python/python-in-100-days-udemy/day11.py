@@ -480,11 +480,24 @@ def calculate_score(cards):
         score -= 10
         aces -= 1
     return score
+def check_winner(playerCards, computerCards):
+    playerScore = calculate_score(playerCards)
+    computerScore = calculate_score(computerCards)
 
+    if playerScore == computerScore:
+        print("Draw!")
+    elif playerScore > 21:
+        print("Player busted!")
+    elif computerScore > 21:
+        print("Player won!")
+    elif playerScore > computerScore:
+        print("Player won!")
+    else:
+        print("Player busted!")
 
 def show_first_hand_of_player():
     print("="*40)
-    print("Your cards:")
+    print("Player cards:")
     results = [choose_card(deck), choose_card(deck)]
     for result in results:
         print(result[0])
@@ -500,23 +513,32 @@ def show_first_hand_of_computer():
         cCard1[1], tuple) else cCard1[1])
     return [cCard1]
 
-
-def player_stand(computerCards):
+def player_stand(computerCards,playerCards):
     while calculate_score(computerCards) < 17:
         computerCards.append(choose_card(deck))
+    print("Computer's final cards:")
+    for card in computerCards:
+        print(card[0])
+    print("Computer's final score:", calculate_score(computerCards))
+    for card in playerCards:
+        print(card[0])
+    print("Player final score:", calculate_score(playerCards))
+    if is_black_jack(computerCards):
+        print("Player has Blackjack! Player won!\n")
+        print("="*40)
+        time.sleep(3)
     return computerCards
 
 
-while True:
-    try:
-        print(blackjackArt)
-        print("Welcome to Sadegh python in 100 days blackjack")
-        start = input(
-            "Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
-        if start != 'n' and start != 'y':
-            raise ValueError
-        else:
-            if start == 'y':
+def play_blackjack():
+    while True:
+        try:
+            print(blackjackArt)
+            print("Welcome to Sadegh python in 100 days blackjack")
+            start = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
+            if start != 'n' and start != 'y':
+                raise ValueError
+            elif start == 'y':
                 computerCards = show_first_hand_of_computer()
                 playerFirst = show_first_hand_of_player()
                 playerCards = playerFirst[0]
@@ -524,39 +546,29 @@ while True:
                     print("Player has Blackjack! Player won!\n")
                     print("="*40)
                     time.sleep(3)
+                    continue  # Start a new game after the player wins
                 else:
                     while True:
                         try:
-                            anotherCard = input(
-                                "Type 'y' to hit or type 'n' to stand: ").lower()
+                            anotherCard = input("Type 'y' to hit or type 'n' to stand: ").lower()
                             if anotherCard != 'n' and anotherCard != 'y':
                                 raise ValueError
+                            elif anotherCard == 'y':
+                                pass  # Implement hit functionality here
                             else:
-                                if anotherCard == 'y':
-                                    pass  # You can implement the 'hit' functionality here
-    
-                                else:
-                                    computerCards = player_stand(computerCards)
-                                    print("Computer's final cards:")
-                                    for card in computerCards:
-                                        print(card[0])
-                                    print("Your final score:",
-                                          calculate_score(playerCards))
-                                    print("Computer's final score:",
-                                          calculate_score(computerCards))
-                                    if not is_black_jack(computerCards):
-                                        print("Player has Blackjack! Player won!\n")
-                                        print("="*40)
-                                        time.sleep(3)
-                                break
-    
+                                computerCards = player_stand(computerCards,playerCards)
+                                check_winner(playerCards,computerCards)
+
+                                
+                                break  # Start a new game after the current game ends
                         except ValueError:
                             print("Please only type 'y' or 'n'")
                             time.sleep(3)
-                    break
             else:
                 sys.exit()
-    except ValueError:
-        print("Please only type 'y' or 'n'")
-        time.sleep(3)
-        # os.system('cls' if os.name == 'nt' else 'clear')
+        except ValueError:
+            print("Please only type 'y' or 'n'")
+            time.sleep(3)
+
+# Call the function to start the game
+play_blackjack()
