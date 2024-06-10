@@ -455,10 +455,16 @@ def choose_card(deck):
 
 
 def is_black_jack(cards):
-    secIndex = [c[1] for c in cards]
-    if (1, 11) and 10 in secIndex:
-        return len(cards)==2
-    return False
+    aceCounter, tenCounter = 0, 0
+    for card in cards:
+        if card[1] == 10:
+            tenCounter += 1
+        if card[1] == (1, 11):
+            aceCounter += 1
+    if len(cards) == 2 and aceCounter == 1 and tenCounter == 1:
+        return True
+    else:
+        return False
 
 
 def calculate_score(cards):
@@ -477,19 +483,21 @@ def calculate_score(cards):
 
 
 def show_first_hand_of_player():
+    print("="*40)
     print("Your cards:")
-    results=[choose_card(deck),choose_card(deck)]
+    results = [choose_card(deck), choose_card(deck)]
     for result in results:
         print(result[0])
     print("Your current score:", calculate_score(results), "\n")
-    return results
+    return results,is_black_jack(results)
 
 
 def show_first_hand_of_computer():
     print("Computer cards:")
     cCard1 = choose_card(deck)
     print(cCard1[0])
-    print("Computer current score:",cCard1[1][1] if isinstance(cCard1[1],tuple) else cCard1[1])
+    print("Computer current score:", cCard1[1][1] if isinstance(
+        cCard1[1], tuple) else cCard1[1])
     return [cCard1]
 
 
@@ -509,31 +517,46 @@ while True:
             raise ValueError
         else:
             if start == 'y':
-                playerCards = show_first_hand_of_player()
                 computerCards = show_first_hand_of_computer()
-                try:
-                    anotherCard = input(
-                        "Type 'y' to hit or type 'n' to stand: ").lower()
-                    if anotherCard != 'n' and anotherCard != 'y':
-                        raise ValueError
-                    else:
-                        if anotherCard == 'y':
-                            pass  # You can implement the 'hit' functionality here
-                     
-                        else:
-                            computerCards = player_stand(computerCards)
-                            print("Computer's final cards:")
-                            for card in computerCards:
-                                print(card[0])
-                            print("Your final score:", calculate_score(playerCards))
-                            print("Computer's final score:", calculate_score(computerCards))
-
-                except ValueError:
-                    print("Please only type 'y' or 'n'")
-                break
+                playerFirst = show_first_hand_of_player()
+                playerCards = playerFirst[0]
+                if playerFirst[1]:
+                    print("Player has Blackjack! Player won!\n")
+                    print("="*40)
+                    time.sleep(3)
+                else:
+                    while True:
+                        try:
+                            anotherCard = input(
+                                "Type 'y' to hit or type 'n' to stand: ").lower()
+                            if anotherCard != 'n' and anotherCard != 'y':
+                                raise ValueError
+                            else:
+                                if anotherCard == 'y':
+                                    pass  # You can implement the 'hit' functionality here
+    
+                                else:
+                                    computerCards = player_stand(computerCards)
+                                    print("Computer's final cards:")
+                                    for card in computerCards:
+                                        print(card[0])
+                                    print("Your final score:",
+                                          calculate_score(playerCards))
+                                    print("Computer's final score:",
+                                          calculate_score(computerCards))
+                                    if not is_black_jack(computerCards):
+                                        print("Player has Blackjack! Player won!\n")
+                                        print("="*40)
+                                        time.sleep(3)
+                                break
+    
+                        except ValueError:
+                            print("Please only type 'y' or 'n'")
+                            time.sleep(3)
+                    break
             else:
                 sys.exit()
     except ValueError:
         print("Please only type 'y' or 'n'")
         time.sleep(3)
-        os.system('cls' if os.name == 'nt' else 'clear')
+        # os.system('cls' if os.name == 'nt' else 'clear')
