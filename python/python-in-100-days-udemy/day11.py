@@ -488,6 +488,8 @@ def check_winner(playerCards, computerCards):
 
     if playerScore == computerScore:
         print("Draw!")
+    elif is_black_jack(computerCards) or is_black_jack(playerCards):
+        pass
     elif playerScore > 21:
         print("Player busted! Computer won!")
     elif computerScore > 21:
@@ -578,6 +580,7 @@ def play_blackjack():
                                     playerCards = player_hit(playerCards, computerCards)
                             computerCards = player_stand(computerCards, playerCards)
                             check_winner(playerCards, computerCards)
+                            time.sleep(3)
                             break  # Start a new game after the current game ends
                         except ValueError:
                             print("Please only type 'y' or 'n'")
