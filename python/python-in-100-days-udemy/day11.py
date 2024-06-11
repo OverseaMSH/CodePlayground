@@ -480,6 +480,8 @@ def calculate_score(cards):
         score -= 10
         aces -= 1
     return score
+
+
 def check_winner(playerCards, computerCards):
     playerScore = calculate_score(playerCards)
     computerScore = calculate_score(computerCards)
@@ -487,33 +489,50 @@ def check_winner(playerCards, computerCards):
     if playerScore == computerScore:
         print("Draw!")
     elif playerScore > 21:
-        print("Player busted!")
+        print("Player busted! Computer won!")
     elif computerScore > 21:
-        print("Player won!")
+        print("Computer busted! Player won!")
     elif playerScore > computerScore:
         print("Player won!")
     else:
-        print("Player busted!")
+        print("Computer won!")
+
 
 def show_first_hand_of_player():
-    print("="*40)
+    print("=" * 40)
     print("Player cards:")
     results = [choose_card(deck), choose_card(deck)]
     for result in results:
         print(result[0])
     print("Your current score:", calculate_score(results), "\n")
-    return results,is_black_jack(results)
+    return results, is_black_jack(results)
+
+
+def player_hit(playerCards, computerCards):
+    playerCards.append(choose_card(deck))
+    print("Computer's final cards:")
+    for card in computerCards:
+        print(card[0])
+    print("Computer's final score:", calculate_score(computerCards))
+    for card in playerCards:
+        print(card[0])
+    print("Player final score:", calculate_score(playerCards))
+    if is_black_jack(computerCards):
+        print("Computer has Blackjack! Computer won!\n")
+        print("=" * 40)
+        time.sleep(3)
+    return playerCards
 
 
 def show_first_hand_of_computer():
     print("Computer cards:")
     cCard1 = choose_card(deck)
     print(cCard1[0])
-    print("Computer current score:", cCard1[1][1] if isinstance(
-        cCard1[1], tuple) else cCard1[1])
+    print("Computer current score:", cCard1[1][1] if isinstance(cCard1[1], tuple) else cCard1[1])
     return [cCard1]
 
-def player_stand(computerCards,playerCards):
+
+def player_stand(computerCards, playerCards):
     while calculate_score(computerCards) < 17:
         computerCards.append(choose_card(deck))
     print("Computer's final cards:")
@@ -524,8 +543,8 @@ def player_stand(computerCards,playerCards):
         print(card[0])
     print("Player final score:", calculate_score(playerCards))
     if is_black_jack(computerCards):
-        print("Player has Blackjack! Player won!\n")
-        print("="*40)
+        print("Computer has Blackjack! Computer won!\n")
+        print("=" * 40)
         time.sleep(3)
     return computerCards
 
@@ -544,23 +563,22 @@ def play_blackjack():
                 playerCards = playerFirst[0]
                 if playerFirst[1]:
                     print("Player has Blackjack! Player won!\n")
-                    print("="*40)
+                    print("=" * 40)
                     time.sleep(3)
-                    continue  # Start a new game after the player wins
+                    continue
                 else:
                     while True:
                         try:
-                            anotherCard = input("Type 'y' to hit or type 'n' to stand: ").lower()
-                            if anotherCard != 'n' and anotherCard != 'y':
-                                raise ValueError
-                            elif anotherCard == 'y':
-                                pass  # Implement hit functionality here
-                            else:
-                                computerCards = player_stand(computerCards,playerCards)
-                                check_winner(playerCards,computerCards)
-
-                                
-                                break  # Start a new game after the current game ends
+                            anotherCard = 'y'
+                            while anotherCard == 'y' and calculate_score(playerCards) <= 21:
+                                anotherCard = input("Type 'y' to hit or type 'n' to stand: ").lower()
+                                if anotherCard != 'n' and anotherCard != 'y':
+                                    raise ValueError
+                                if anotherCard == 'y':
+                                    playerCards = player_hit(playerCards, computerCards)
+                            computerCards = player_stand(computerCards, playerCards)
+                            check_winner(playerCards, computerCards)
+                            break  # Start a new game after the current game ends
                         except ValueError:
                             print("Please only type 'y' or 'n'")
                             time.sleep(3)
@@ -570,5 +588,5 @@ def play_blackjack():
             print("Please only type 'y' or 'n'")
             time.sleep(3)
 
-# Call the function to start the game
+
 play_blackjack()
