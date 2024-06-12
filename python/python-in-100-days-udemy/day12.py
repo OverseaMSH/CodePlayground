@@ -1,6 +1,7 @@
 import time
 import random
 import sys
+
 art = r"""
 000000    1111    222222    333333    44  44
 00  00      11         2        33    44  44
@@ -42,15 +43,18 @@ def check_num(num, start, end, attempts):
             print("Please enter an integer!")
         except RangeError:
             print(f"Please enter an integer in range of ({start},{end})!")
-    if attempts==0:
+    if attempts == 0:
         print(f"You have 0 attempts remaining to guess the number! Game over!")
         sys.exit()
 
 while True:
     try:
         numbersRange = input("Please enter a range (start,end) with a minimum difference of 15. For example (1,100): ")
-        start = int(numbersRange.strip("()").split(",")[0])
-        end = int(numbersRange.strip("()").split(",")[1])
+        parts = numbersRange.strip("()").split(",")
+        if len(parts) != 2:
+            raise RangeError("Please enter a correct range (start,end) with two integers separated by a comma!")
+        start = int(parts[0])
+        end = int(parts[1])
         if start >= end:
             raise RangeError("End value must be greater than start value!")
         if end - start < 15:
@@ -63,9 +67,9 @@ while True:
                 else:
                     num = random.randint(start, end)
                     if dif == "easy":
-                        attempts = int((end - start) / 10)+2
+                        attempts = int((end - start) / 10) + 2
                     else:
-                        attempts = int((end - start) / 20)+2
+                        attempts = int((end - start) / 20) + 2
                     check_num(num, start, end, attempts)
                     break
             except ValueError:
