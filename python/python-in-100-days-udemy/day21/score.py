@@ -11,9 +11,14 @@ class Score(Turtle):
         self.write(f"Score: {self.scoreNum}", align="center",
                    font=("Roboto", 24, "normal"))
         self.hideturtle()
+
     def update_score(self):
-        self.scoreNum+=1
+        self.scoreNum += 1
         self.clear()
         self.write(f"Score: {self.scoreNum}", align="center",
                    font=("Roboto", 24, "normal"))
-        
+
+    def game_over(self):
+        self.goto(0, 0)
+        self.write("GAME OVER!", align="center",
+                   font=("Roboto", 24, "normal"))

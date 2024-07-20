@@ -6,7 +6,7 @@ from score import Score
 screen = Screen()
 screen.setup(width=690, height=690)
 screen.bgcolor("black")
-screen.title("Sadegh day20 snake game")
+screen.title("Sadegh day21 snake game")
 screen.tracer(0)
 snake = Snake()
 food = Food()
@@ -25,6 +25,15 @@ while active:
     snake.move()
     if snake.head.distance(food) < 15:
         food.appear_food()
+        snake.extend()
         speed -= 0.002
         score.update_score()
+    if snake.head.xcor() > 325 or snake.head.xcor() < -325 or snake.head.ycor() > 325 or snake.head.ycor() < -325:
+        active = False
+        score.game_over()
+    for sq in snake.snakeSquares[1:]:
+        if snake.head.distance(sq) < 10:
+            active = False
+            score.game_over()
+
 screen.exitonclick()

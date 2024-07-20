@@ -23,6 +23,17 @@ class Snake:
             snake.goto(MOVE_DISTANCE*-i, 0)
             self.snakeSquares.append(snake)
 
+    def add_snake_square(self, position):
+        snake = Turtle()
+        snake.shape("square")
+        snake.color("white")
+        snake.penup()
+        snake.goto(MOVE_DISTANCE*position[0], MOVE_DISTANCE*position[1])
+        self.snakeSquares.append(snake)
+
+    def extend(self):
+        self.add_snake_square(self.snakeSquares[-1].position())
+
     def move(self):
         for sqNum in range(len(self.snakeSquares)-1, 0, -1):
             newX = self.snakeSquares[sqNum-1].xcor()
