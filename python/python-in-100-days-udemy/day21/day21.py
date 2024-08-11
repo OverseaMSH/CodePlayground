@@ -27,13 +27,13 @@ while active:
         food.appear_food()
         snake.extend()
         speed -= 0.002
-        score.update_score()
+        score.increase_score()
     if snake.head.xcor() > 325 or snake.head.xcor() < -325 or snake.head.ycor() > 325 or snake.head.ycor() < -325:
-        active = False
-        score.game_over()
+        score.restart()
+        snake.restart()
+
     for sq in snake.snakeSquares[1:]:
         if snake.head.distance(sq) < 10:
-            active = False
-            score.game_over()
-
+            score.restart()
+            snake.restart()
 screen.exitonclick()

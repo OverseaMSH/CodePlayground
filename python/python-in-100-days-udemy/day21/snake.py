@@ -31,6 +31,13 @@ class Snake:
         snake.goto(MOVE_DISTANCE*position[0], MOVE_DISTANCE*position[1])
         self.snakeSquares.append(snake)
 
+    def restart(self):
+        for sq in self.snakeSquares:
+            sq.goto(1000, 1000)
+        self.snakeSquares.clear()
+        self.create_snake()
+        self.head = self.snakeSquares[0]
+
     def extend(self):
         self.add_snake_square(self.snakeSquares[-1].position())
 
