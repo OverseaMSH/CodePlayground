@@ -1,7 +1,7 @@
+// https://quera.org/college/3016/chapter/10131/lesson/60772/?comments_page=1&comments_filter=ALL&submissions_page=1
 #include <iostream>
 #include <vector>
 using namespace std;
-
 int main() {
     int n, q;
     cin >> n >> q;
