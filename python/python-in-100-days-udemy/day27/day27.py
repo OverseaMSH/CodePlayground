@@ -1,11 +1,13 @@
 from tkinter import *
 
+
 def miles_to_km():
     try:
         miles = float(mile.get())
         km.config(text=f"{miles * 1.609:.2f}")
     except ValueError:
         km.config(text="Invalid input")
+
 
 window = Tk()
 window.title("Miles to Kilometers converter")
@@ -26,7 +28,8 @@ km.grid(column=1, row=1)
 kmLabel = Label(text="Km")
 kmLabel.grid(column=2, row=1)
 
-calcButton = Button(text="Calculate", command=miles_to_km)  # Removed the parentheses
+# Removed the parentheses
+calcButton = Button(text="Calculate", command=miles_to_km)
 calcButton.grid(column=1, row=2)
 
 window.mainloop()
