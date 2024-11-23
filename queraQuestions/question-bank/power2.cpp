@@ -2,9 +2,9 @@
 #include <iostream>
 using namespace std;
 int main() {
-    int n;cin>>n;
-    int base=1;
-    while(base<n){
+    long long n;cin>>n;
+    long long base=1;
+    while(base<=n){
         base*=2;
     }
     cout<<base;
