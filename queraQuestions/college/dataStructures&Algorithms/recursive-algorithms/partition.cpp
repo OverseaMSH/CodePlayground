@@ -8,21 +8,21 @@ int main() {
     int n;
     cin >> n;
 
-    vector<int> arr(n);
+    vector<long long> arr(n);
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
 
-    int totalSum = accumulate(arr.begin(), arr.end(), 0);
-    int minDiff = totalSum; 
+    long long totalSum = accumulate(arr.begin(), arr.end(), 0LL); 
+    long long minDiff = totalSum; 
     for (int mask = 0; mask < (1 << n); mask++) {
-        int subsetSum = 0;
+        long long subsetSum = 0;
         for (int i = 0; i < n; i++) {
             if (mask & (1 << i)) { 
                 subsetSum += arr[i];
             }
         }
-        int otherSum = totalSum - subsetSum;
+        long long otherSum = totalSum - subsetSum;
         minDiff = min(minDiff, abs(subsetSum - otherSum));
     }
 
