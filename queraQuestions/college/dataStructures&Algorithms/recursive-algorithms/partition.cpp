@@ -1,3 +1,4 @@
+// https://quera.org/college/3016/chapter/8235/lesson/27774/
 #include <iostream>
 #include <vector>
 #include <cmath>
