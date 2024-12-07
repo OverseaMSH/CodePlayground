@@ -44,16 +44,18 @@ def save():
     else:
         # is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered: \nEmail: {email} "
         #                                               f"\nPassword: {password} \nIs it ok to save?")
-        # if is_ok:
-        #     with open("python/python-in-100-days-udemy/day30/data.txt", "a") as data_file:
-        #         data_file.write(f"{website} | {email} | {password}\n")
-        #         website_entry.delete(0, END)
-        #         password_entry.delete(0, END)
-        with open("python/python-in-100-days-udemy/day30/data.json", "r") as dataFile:
-            data=json.load(dataFile)
+        try:
+            with open("python/python-in-100-days-udemy/day30/data.json", "r") as dataFile:
+                data = json.load(dataFile)
+        except:
+            with open("python/python-in-100-days-udemy/day30/data.json", "w") as dataFile:
+                json.dump(newData, dataFile, indent=4)
+        else:
             data.update(newData)
-        with open("python/python-in-100-days-udemy/day30/data.json", "w") as dataFile:
-            json.dump(newData, dataFile, indent=4)
+            with open("python/python-in-100-days-udemy/day30/data.json", "w") as dataFile:
+                json.dump(newData, dataFile, indent=4)
+        finally:
+
             website_entry.delete(0, END)
             password_entry.delete(0, END)
 
