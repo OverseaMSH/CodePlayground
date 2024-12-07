@@ -7,9 +7,9 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": false,
-      "cwd": "/home/overseamsh/Coding/CodePlayground/queraQuestions/college/dataStructures&Algorithms",
-      "program": "/home/overseamsh/Coding/CodePlayground/queraQuestions/college/dataStructures&Algorithms/build/Debug/outDebug",
+      "externalConsole": true,
+      "cwd": "i:/github/CodePlayground/sanDiegoDataStructres&Algorithms/algorithmic-toolbox/module1-programming-challenges",
+      "program": "i:/github/CodePlayground/sanDiegoDataStructres&Algorithms/algorithmic-toolbox/module1-programming-challenges/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
