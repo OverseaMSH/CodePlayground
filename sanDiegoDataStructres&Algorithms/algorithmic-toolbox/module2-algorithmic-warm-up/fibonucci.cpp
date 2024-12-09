@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
-int fib(int n) {
+long long fib(long long n) {
     if (n == 0) return 0;
-    int a = 0, b = 1;
-    for (int i = 2; i <= n; i++) {
-        int temp = a + b;
+    long long a = 0, b = 1;
+    for (long long i = 2; i <= n; i++) {
+        long long temp = a + b;
         a = b;
         b = temp;
     }
@@ -13,7 +13,7 @@ int fib(int n) {
 
 int main()
 {
-    int n;
+    long long n;
     cin >> n;
     cout << fib(n);
 }

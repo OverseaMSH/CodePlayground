@@ -1,26 +1,28 @@
 #include <iostream>
-using namespace std;
-long long fib(long long n)
-{
-    long long a = 0, b = 1;
-    for (long long i = 2; i <= n; ++i)
-    {
-        long long temp = (a + b) % 10;
-        a = b;
-        b = temp;
+#include <vector>
+using std::vector;
+
+long long get_fibonacci_partial_sum_naive(long long from, long long to) {
+    long long sum = 0;
+
+    long long current = 0;
+    long long next  = 1;
+
+    for (long long i = 0; i <= to; ++i) {
+        if (i >= from) {
+            sum += current;
+        }
+
+        long long new_current = next;
+        next = next + current;
+        current = new_current;
     }
-    return (n == 0) ? 0 : b;
+
+    return sum % 10;
 }
 
-int main()
-{
-    long long n, m;
-    cin >> n >> m;
-    long long sum = 0;
-    for (int i = m; i < n + 1; i++)
-    {
-        sum += fib(i);
-    }
-    cout << sum%10 << endl;
-    return 0;
+int main() {
+    long long from, to;
+    std::cin >> from >> to;
+    std::cout << get_fibonacci_partial_sum_naive(from, to) << '\n';
 }

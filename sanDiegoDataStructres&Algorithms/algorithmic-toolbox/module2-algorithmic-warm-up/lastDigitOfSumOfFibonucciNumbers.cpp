@@ -5,10 +5,10 @@ long long fib(long long n) {
     long long a = 0, b = 1;
     for (long long i = 2; i <= n; ++i) {
         long long temp = (a + b) % 10;
-        a = b;
-        b = temp;
+        a = b%10;
+        b = temp%10;
     }
-    return (n == 0) ? 0 : b;
+    return (n == 0) ? 0 : b%10;
 }
 
 int main() {
