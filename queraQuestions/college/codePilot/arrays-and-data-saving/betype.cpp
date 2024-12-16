@@ -1,6 +1,5 @@
 // https://quera.org/college/4499/chapter/12639/lesson/42895/
 #include <iostream>
-#include <vector>
 #include <string>
 
 using namespace std;
@@ -9,23 +8,25 @@ int main() {
     string input;
     cin >> input;
 
-    vector<char> charArray(input.begin(), input.end());
+    string result = ""; 
+    int index = 0;      
 
-    for (size_t i = 0; i < charArray.size(); ++i) {
-        if (charArray[i] == '=') {
-            charArray.erase(charArray.begin() + i);
-            charArray.erase(charArray.begin() + (i - 1));
-            if (i > 0) {
-                
-                i-=2;
+    for (char c : input) {
+        if (c == '=') {
+            if (index > 0) {
+                --index; 
             }
+        } else {
+            if (index < result.size()) {
+                result[index] = c; 
+            } else {
+                result += c; 
+            }
+            ++index; 
         }
     }
 
-    for (char c : charArray) {
-        cout << c;
-    }
-    cout << endl;
+    cout << result.substr(0, index) << endl;
 
     return 0;
 }
