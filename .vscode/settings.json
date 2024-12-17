@@ -66,6 +66,15 @@
     "string_view": "cpp",
     "initializer_list": "cpp",
     "cmath": "cpp",
-    "format": "cpp"
+    "format": "cpp",
+    "chrono": "cpp",
+    "forward_list": "cpp",
+    "list": "cpp",
+    "unordered_set": "cpp",
+    "ranges": "cpp",
+    "span": "cpp",
+    "stacktrace": "cpp",
+    "regex": "cpp",
+    "valarray": "cpp"
   }
 }

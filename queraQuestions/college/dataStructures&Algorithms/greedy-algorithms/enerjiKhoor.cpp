@@ -1,4 +1,4 @@
-#https://quera.org/college/3016/chapter/8236/lesson/28702/
+// https://quera.org/college/3016/chapter/8236/lesson/28702
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -7,29 +7,30 @@ using namespace std;
 
 int main() {
     int n;
-    long long k; // تبدیل k به long long
+    long long k; 
     cin >> n >> k;
 
-    vector<pair<long long, long long>> v; // تبدیل مقادیر a و b به long long
+    vector<pair<long long, long long>> fruits;
     for (int i = 0; i < n; i++) {
-        long long a, b;
-        cin >> a >> b;
-        v.push_back({a, b});
+        long long b, a;
+        cin >> b >> a;
+        fruits.push_back({b, a});
     }
 
-    // مرتب‌سازی بر اساس مقدار دوم
-    sort(v.begin(), v.end(), [](const pair<long long, long long>& p1, const pair<long long, long long>& p2) {
-        return p1.first < p2.first;
-    });
+    sort(fruits.begin(), fruits.end());
 
-    // محاسبه k
-    for (auto p : v) {
-        if (p.second > p.first) {
-            k += p.second - p.first;
+    long long max_energy = k; 
+    for (const auto& fruit : fruits) {
+        long long b = fruit.first; 
+        long long a = fruit.second; 
+
+        if (k >= b && b < a) {
+            k += a - b;    
+            max_energy = max(max_energy, k);
         }
     }
 
-    cout << k << endl; // چاپ مقدار نهایی k
+    cout << max_energy << endl;
 
     return 0;
 }
