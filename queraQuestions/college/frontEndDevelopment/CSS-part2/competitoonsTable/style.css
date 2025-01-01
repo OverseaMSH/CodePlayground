@@ -1,0 +1,58 @@
+@font-face {
+    font-family: "IranYekan";
+    src: url("assets/font/IRANyekan.ttf");
+}
+
+* {
+    font-family: "IranYekan";
+}
+
+.table-container {
+    width: 80vw;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse; 
+}
+
+.table-container table th, 
+.table-container table td {
+    text-align: center;
+    vertical-align: middle; 
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-container table tr:hover, 
+.table-container table tr:focus {
+    background-color: #e0e0e0;
+}
+
+.table-container table th {
+    background-color: #F9FAFB;
+}
+
+.table-container table tbody tr:nth-child(even) {
+    background-color: #FAFAFB; 
+}
+
+.table-container table tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+.question-btn {
+    background-color: #0076A6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.question-btn:hover {
+    background-color: #0090c9;
+}
