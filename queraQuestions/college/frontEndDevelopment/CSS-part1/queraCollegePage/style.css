@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "IranSans";
+  src:
+    url("./IRANSansXRegular.ttf") format("ttf"),
+}
+h1 {
+    font-family: IranSans;
+  }
+  
+  h2 {
+          font-family: IranSans;
+    text-align: center;
+  }
+  p {
+                font-family: IranSans;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+  }
