@@ -1,0 +1,2 @@
+// https://quera.org/college/6092/chapter/73476/lesson/138788/?comments_page=1&comments_filter=ALL&submissions_page=1
+export const solver = t => t.split(' ').map((v, i) => [+v, i + 1]).filter(([v, i]) => !(v % 6) && !(i % 6)).map(([v]) => v).sort((a, b) => a - b).join(' ') || ''
