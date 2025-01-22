@@ -1,0 +1,44 @@
+@font-face {
+    font-family: "Vazir";
+    src:
+        url("assets/font/Vazir.ttf"),
+}
+
+* {
+    font-family: "Vazir";
+}
+
+
+body {
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.contact-container {
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.form-group textarea {
+    box-sizing: border-box;
+
+}
+
+.error-message {
+    display: none;
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+
+.form-group input.invalid ~ .error-message,
+.form-group textarea.invalid ~ .error-message,
+.form-group select.invalid ~ .error-message {
+    display: block;
+}

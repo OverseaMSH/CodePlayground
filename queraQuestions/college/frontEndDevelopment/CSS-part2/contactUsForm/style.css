@@ -1,0 +1,77 @@
+@font-face {
+    font-family: "Vazir";
+    src:
+        url("assets/font/Vazir.ttf"),
+}
+
+* {
+    font-family: "Vazir";
+}
+
+
+body {
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.contact-container {
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+.contact-container h2{
+    text-align: center;
+}
+.form-group{
+    margin-bottom: 15px;
+}
+.form-group label{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.form-group select {
+    width: 100%; 
+    padding: 10px;  
+    border: 1px solid #ccc; 
+    border-radius: 4px;  
+}
+.form-group input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+      outline: none;
+    border: 1px solid #007bff ;
+
+
+}
+.form-group textarea {
+    box-sizing: border-box;
+    resize: none;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+ button {
+    padding: 10px; 
+    border-radius: 4px;  
+    outline: none;
+    border: 0;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    background-image: linear-gradient(to right, #6e8efb, #a777e3);
+}
+button:hover{
+    background-image: linear-gradient(to right, #a777e3  , #6e8efb  );
+
+}
