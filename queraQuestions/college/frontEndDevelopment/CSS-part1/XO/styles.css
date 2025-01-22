@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+table {
+    margin: auto;
+    background-color: lightblue;
+}
+
+td {
+    width: 100px;
+    height: 100px;
+}
+.border-1{
+    border-right: 3px solid black;
+    border-left: 3px solid black;
+    
+}
+.border-2{
+    border-top:3px solid black ;
+    border-bottom: 3px solid black ;
+}

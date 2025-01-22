@@ -1,0 +1,85 @@
+@font-face {
+    font-family: "IranYekan";
+    src: url("assets/font/IRANyekan.ttf");
+}
+
+* {
+    font-family: "IranYekan";
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.footer {
+    background-color: #f8f8f8;
+    padding: 10px 60px;
+}
+
+.footer-info {
+    margin: 10px;
+    text-align: center;
+}
+
+.footer .social-links a {
+    color: #229ecf;
+    text-decoration: none;
+    margin: 10px;
+}
+
+.footer-section {
+    margin: 10px;
+    text-align: right;
+}
+
+.footer-section * {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+    color: #666;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-bottom {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.footer-bottom span {
+    color: #e74c3c;
+}
+
+.footer-logo {
+    width: 100px;
+}
+

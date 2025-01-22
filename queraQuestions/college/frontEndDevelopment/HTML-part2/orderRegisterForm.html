@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>فرم ثبت‌نام کاربر</title>
+  <style>
+    body {
+      font-family: "B Yekan", sans-serif;
+      margin: 20px;
+    }
+  </style>
+</head>
+
+<body dir="rtl">
+
+  <fieldset>
+    <legend>اطلاعات ارسال و پرداخت</legend>
+    <input type="text" id="province" list="provinces" required />
+    <datalist id="provinces">
+      <option value="تهران"></option>
+      <option value="فارس"></option>
+      <option value="اصفهان"></option>
+      <option value="گیلان"></option>
+    </datalist>
+    <textarea id="address" rows="4"></textarea>
+    <input type="checkbox" id="self_delivery" />
+    
+    <div>
+      <p>انتخاب درگاه پرداخت:</p>
+      <input type="radio" id="mellat" name="payment_gateway" value="mellat" checked />
+      <label for="mellat">بانک ملت</label>
+      <br />
+      <input type="radio" id="saderat" name="payment_gateway" value="saderat" />
+      <label for="saderat">بانک صادرات</label>
+      <br />
+      <input type="radio" id="parsian" name="payment_gateway" value="parsian" />
+      <label for="parsian">بانک پارسیان</label>
+    </div>
+    
+    <button type="submit" id="submit">ارسال</button>
+  </fieldset>
+
+</body>
+</html>

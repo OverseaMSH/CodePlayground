@@ -1,0 +1,47 @@
+@font-face {
+    font-family: "IranYekan";
+    src:
+        url("assets/font/IRANyekan.ttf");
+}
+
+* {
+    font-family: "IranYekan";
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.navbar {
+    display: flex;
+    justify-content: start;
+}
+.navbar .links{
+    margin: 0 20px;
+    list-style: none;
+
+}
+.navbar .links li{
+    display: inline;
+    margin: 5px;
+    
+}
+.navbar .links li a{
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+.navbar .links li a:hover,.navbar .links li a:focus{
+    color: #229ECF;
+    font-weight: bold;
+}

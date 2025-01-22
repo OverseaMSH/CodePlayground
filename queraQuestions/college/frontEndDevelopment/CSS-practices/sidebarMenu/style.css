@@ -1,0 +1,93 @@
+@font-face {
+    font-family: "IranYekan";
+    src:
+        url("assets/font/IRANyekan.ttf");
+}
+
+* {
+    font-family: "IranYekan";
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100%;
+    background-color: #F7F7F7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 16px 0 0 16px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.logo-img {
+    width: 40px;
+    margin-left: 10px;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+    color: #666;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+.menu-item i {
+    margin-left: 10px;
+}
+
+.menu-item p {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.menu-item.active,
+.menu-item:hover {
+    background-color: #7563ae;
+    color: #fff;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.profile-img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.name {
+    color: #333;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.profile i {
+    color: #666;
+}

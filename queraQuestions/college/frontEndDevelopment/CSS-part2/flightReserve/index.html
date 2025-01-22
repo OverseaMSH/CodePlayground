@@ -1,0 +1,50 @@
+<!-- https://quera.org/college/6092/chapter/19718/lesson/252536/?comments_page=1&comments_filter=ALL&submissions_page=1 -->
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سایت رزرو سفر</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body dir="rtl">
+    <button id="openModal" class="open-modal-btn">رزرو پرواز</button>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <h2>انتخاب کلاس پرواز</h2>
+
+            <form class="flight-class-form">
+                <label class="radio-container">
+                    <input type="radio" name="class" value="economy" checked>
+                    کلاس اقتصادی
+                </label>
+                <br>
+                <label class="radio-container">
+                    <input type="radio" name="class" value="business">
+                    کلاس تجاری
+                </label>
+                <br>
+                <label class="radio-container">
+                    <input type="radio" name="class" value="first">
+                    کلاس درجه یک
+                </label>
+                <br>
+                <label class="radio-container">
+                    <input type="radio" name="class" value="premium" disabled>
+                    کلاس ویژه (غیرفعال)
+                </label>
+            </form>
+
+            <button class="search-btn">جستجوی پرواز</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
