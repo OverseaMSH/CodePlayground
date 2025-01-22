@@ -1,0 +1,1 @@
+day 39 is using sms api which the course api unavailable in Iran.

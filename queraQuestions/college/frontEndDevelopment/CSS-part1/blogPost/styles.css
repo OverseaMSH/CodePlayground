@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.blog-post {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.highlight {
+    background-color: rgb(255, 217, 0);
+}
+.post-title{
+    font-size: 2em;
+    text-transform: capitalize;
+    color: #333;
+    text-decoration: underline;
+}
+.post-author , .post-date{
+    font-style: italic;
+    color: #777;
+}
+.author-name{
+    font-weight: bold;
+    text-transform: uppercase;
+    
+}
+.date{
+        text-transform: capitalize;
+
+}
+.post-content{
+    text-indent: 50px;
+    text-align: justify;
+    word-spacing: 2px;
+    line-height: 1.6;
+}

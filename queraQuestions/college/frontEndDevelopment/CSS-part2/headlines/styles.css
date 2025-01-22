@@ -1,0 +1,71 @@
+@font-face {
+    font-family: "IranYekan";
+    src:
+        url("assets/font/IRANyekan.ttf");
+}
+
+* {
+    font-family: "IranYekan";
+}
+
+body {
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.lessons {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.lessons li {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #eeeeee;
+    border-radius: 4px;
+    text-align: right;
+}
+.lessons li:first-child{
+    background-color: #b3e5fc ;
+    border:2px solid #0288d1;
+    font-weight: bold;
+}
+.lessons li:last-child{
+    background-color: #ffcebc  ;
+    border:2px solid #ff7f50 ;
+    font-weight: bold;
+}
+.quiz-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.quiz-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.quiz-btn:hover{
+    background-color: #45a049;
+}
+.quiz-btn:focus{
+    background-color: #388e3c ;
+    box-shadow: 1px 1px #2c6b2f;
+}

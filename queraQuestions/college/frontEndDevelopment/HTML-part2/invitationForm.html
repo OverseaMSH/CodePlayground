@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invitation Form</title>
+  </head>
+  <body>
+    <h1>فرم دعوت‌نامه</h1>
+    <form>
+        <fieldset>
+            <legend>اطلاعات مهمان</legend>
+            <label for="name">
+                نام و نام خانوادگی
+            </label>
+            <input type="text" id="name" required/>
+            <label for="email">
+                ایمیل
+            </label>
+            <input type="email" id="email" required/>
+            <label for="male">
+                آقا
+            </label>
+            <input type="radio" id="male" value="male" required/>
+            <label for="female">
+                خانم
+            </label>
+             <input type="radio" id="female" value="female" required/>
+                     <label for="attendant">تعداد همراهان:</label>
+        <select id="attendant" name="attendant">
+            <option value="0">۰</option>
+            <option value="1">۱</option>
+            <option value="2">۲</option>
+            <option value="3">۳</option>
+            <option value="4">۴</option>
+        </select>
+        <br><br>
+        <button type="submit" id="submit">ارسال</button>
+        <button type="reset" id="reset">بازنشانی</button>
+        </fieldset>
+    </form>
+  </body>
+</html>

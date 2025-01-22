@@ -1,0 +1,95 @@
+<!-- https://quera.org/college/6092/chapter/41943/lesson/140959/?comments_page=1&comments_filter=ALL&submissions_page=1 -->
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      try {
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                vazir: "'Vazir', sans-serif",
+              },
+            },
+          },
+        };
+      } catch {}
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        @font-face {
+          font-family: "Vazir";
+          font-weight: normal;
+          src: url("./fonts/Vazir.ttf");
+        }
+
+        @font-face {
+          font-family: "Vazir";
+          font-weight: bold;
+          src: url("./fonts/Vazir-Bold.ttf");
+        }
+      }
+
+      @layer utilities {
+        .max-width-wrapper {
+          @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+        }
+        .primary-gradient {
+          @apply bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500;
+        }
+
+        .gradient-border {
+          @apply relative;
+        }
+
+        .gradient-border::before {
+          content: "";
+          @apply absolute inset-0 primary-gradient rounded-md -z-10 scale-100 transition-transform duration-300;
+        }
+
+        .gradient-border:hover::before {
+          @apply scale-105;
+        }
+      }
+
+      @layer components {
+        .ice-cream {
+          @apply gradient-border;
+        }
+
+        .ice-cream img {
+          @apply w-72 h-60 rounded-md object-cover;
+        }
+      }
+    </style>
+  </head>
+  <body class="font-vazir">
+    <!--PASTE YOUR CODE FROM PREVIOUS SECTIONS -->
+
+    <main
+      class="max-width-wrapper py-10 lg:py-20 flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8"
+    >
+      <figure class="ice-cream">
+        <img src="./images/1.jpg" alt="Ice Cream 1" />
+      </figure>
+      <figure class="ice-cream">
+        <img src="./images/2.jpg" alt="Ice Cream 2" />
+      </figure>
+      <figure class="ice-cream">
+        <img src="./images/3.jpg" alt="Ice Cream 3" />
+      </figure>
+      <figure class="ice-cream">
+        <img src="./images/4.jpg" alt="Ice Cream 4" />
+      </figure>
+      <figure class="ice-cream">
+        <img src="./images/5.jpg" alt="Ice Cream 5" />
+      </figure>
+      <figure class="ice-cream">
+        <img src="./images/6.jpg" alt="Ice Cream 6" />
+      </figure>
+    </main>
+  </body>
+</html>
