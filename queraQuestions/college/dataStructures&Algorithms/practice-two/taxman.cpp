@@ -1,4 +1,4 @@
-https://quera.org/college/3016/chapter/8241/lesson/29737/?comments_page=1&comments_filter=ALL&submissions_page=1
+// https://quera.org/college/3016/chapter/8241/lesson/29737/?comments_page=1&comments_filter=ALL&submissions_page=1
 #include <bits/stdc++.h>
 using namespace std;
 
